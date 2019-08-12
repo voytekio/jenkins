@@ -22,6 +22,12 @@ pipeline {
                 sh 'exit 1'
             }
         }
+        stage('Sanity check') {
+            steps {
+                input "Does the staging environment look ok?"
+            }
+        }
+        
         stage('deploy') {
             steps {
                 sh 'echo ========================='
