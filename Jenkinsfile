@@ -19,7 +19,7 @@ pipeline {
                 sh 'hostname'
                 sh 'pwd'
                 sh 'printenv'
-                sh 'exit 1'
+                // sh 'exit 1'
             }
         }
         stage('Sanity check') {
