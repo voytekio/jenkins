@@ -7,21 +7,25 @@ pipeline {
     stages {
         stage('build') {
             steps {
+                sh '========================'
                 sh 'echo running Build Stage'
             }
         }
         stage('test') {
             steps {
+                sh '========================'                
                 sh 'echo running Test Stage'
                 sh 'python --version'
                 sh 'hostname'
                 sh 'pwd'
                 sh 'printenv'
+                sh 'exit 1'
             }
         }
         stage('deploy') {
             steps {
-                sh 'echo running Deploy'
+                sh '========================'=                
+                sh 'echo running Deploy Stage'
             }
         }
     }
