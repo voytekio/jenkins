@@ -9,6 +9,7 @@ pipeline {
             steps {
                 sh 'echo ========================'
                 sh 'echo running Build Stage'
+                sh 'poetry -V'
             }
         }
         stage('test') {
@@ -19,15 +20,10 @@ pipeline {
                 sh 'hostname'
                 sh 'pwd'
                 sh 'printenv'
+                sh 'tox'
                 // sh 'exit 1'
             }
-        }
-        stage('Sanity check') {
-            steps {
-                input "Does the staging environment look ok?"
-            }
-        }
-        
+        }        
         stage('deploy') {
             steps {
                 sh 'echo ========================='
