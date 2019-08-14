@@ -14,7 +14,8 @@ pipeline {
                 sh 'pwd'
                 sh 'printenv'
                 sh 'echo ========================'
-                sh '/root/.poetry/bin/poetry -V'
+                sh 'curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python'
+                sh 'poetry -V'
             }
         }
         stage('test') {
