@@ -9,7 +9,12 @@ pipeline {
             steps {
                 sh 'echo ========================'
                 sh 'echo running Build Stage'
-                sh 'poetry -V'
+                sh 'python --version'
+                sh 'hostname'
+                sh 'pwd'
+                sh 'printenv'
+                sh 'echo ========================'
+                sh '/root/.poetry/bin/poetry -V'
             }
         }
         stage('test') {
