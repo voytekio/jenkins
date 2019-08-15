@@ -29,7 +29,7 @@ pipeline {
                 sh 'hostname'
                 sh 'pwd'
                 sh 'printenv'
-                sh 'tox'
+                // sh 'tox'
                 // sh 'exit 1'
             }
         }        
