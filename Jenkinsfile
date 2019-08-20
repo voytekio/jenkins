@@ -3,8 +3,8 @@ pipeline {
     environment {
         TEST_VAR1 = 'true'
         TEST_VAR2 = 'sqlite'
-        AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
-        AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
+        //AWS_ACCESS_KEY_ID     = credentials('jenkins-aws-secret-key-id')
+        //AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
     stages {
         stage('build') {
