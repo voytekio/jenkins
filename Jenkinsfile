@@ -25,10 +25,6 @@ pipeline {
             steps {
                 sh 'echo ========================'                
                 sh 'echo running Test Stage'
-                sh 'python --version'
-                sh 'hostname'
-                sh 'pwd'
-                sh 'printenv'
                 // sh 'tox'
                 // sh 'exit 1'
             }
