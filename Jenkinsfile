@@ -29,10 +29,22 @@ pipeline {
                 // sh 'exit 1'
             }
         }        
-        stage('deploy') {
+        stage('DEPLOY-TAGS') {
             steps {
                 sh 'echo ========================='
-                sh 'echo running Deploy Stage'
+                sh 'echo running only when Tag sent.'
+            }
+        }
+        stage('DEPLOY-PULL_REQUEST') {
+            steps {
+                sh 'echo ========================='
+                sh 'echo running only when PR sent.'
+            }
+        }
+        stage('DEPLOY-MERGE_INTO_MASTER') {
+            steps {
+                sh 'echo ========================='
+                sh 'echo running only when merge into master sent'
             }
         }
     }
