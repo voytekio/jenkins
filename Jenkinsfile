@@ -7,10 +7,10 @@ pipeline {
         //AWS_SECRET_ACCESS_KEY = credentials('jenkins-aws-secret-access-key')
     }
     stages {
-        stage('build') {
+        stage('prep') {
             steps {
                 sh 'echo ========================'
-                sh 'echo running Build Stage'
+                sh 'echo running Prep Stage'
                 sh 'python --version'
                 sh 'hostname'
                 sh 'pwd'
@@ -21,45 +21,49 @@ pipeline {
                 sh 'groups'
             }
         }
-        stage('test') {
+        stage('build') {
             steps {
-                sh 'echo ========================'                
-                sh 'echo running Test Stage'
-                // sh 'tox'
+                sh 'echo ========================'
+                sh 'echo running Build Stage'
+                // sh 'build sh or poetry or whatever'
                 // sh 'exit 1'
             }
-        }        
-        stage('DEPLOY-TAGS') {
-            when {
-                buildingTag()
-            }
-            steps {
-                sh 'echo ========================='
-                sh 'echo running only when Tag sent.'
-            }
         }
-        stage('DEPLOY-PULL_REQUEST') {
+        stage('test') {
             when {
                 changeRequest()
             }
             steps {
-                sh 'echo ========================='
-                sh 'echo running only when PR sent.'
+                sh 'echo ========================'
+                sh 'echo running Test Stage'
+                // sh 'tox'
+                // sh 'exit 1'
             }
         }
-        stage('DEPLOY-MERGE_INTO_MASTER') {
+        stage('deploy-dev') {
             when {
                 branch 'master'
             }
             steps {
                 sh 'echo ========================='
-                sh 'echo running only when merge into master sent'
+                sh 'echo running deploy-dev after merge to master.'
+                sh 'echo upload-to-dev-pypi, or initiate dev master highstate'
+            }
+        }
+        stage('deploy-prod') {
+            when {
+                buildingTag()
+            }
+            steps {
+                sh 'echo ========================='
+                sh 'echo running deploy-pror after new tag uploaded.'
+                sh 'echo upload-to-prod-pypi, or initiate prod master highstate'
             }
         }
     }
     post {
         always {
             echo 'This will always run'
-        }    
+        }
     }
 }
