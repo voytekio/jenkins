@@ -30,18 +30,27 @@ pipeline {
             }
         }        
         stage('DEPLOY-TAGS') {
+            when {
+                buildingTag()
+            }
             steps {
                 sh 'echo ========================='
                 sh 'echo running only when Tag sent.'
             }
         }
         stage('DEPLOY-PULL_REQUEST') {
+            when {
+                changeRequest()
+            }
             steps {
                 sh 'echo ========================='
                 sh 'echo running only when PR sent.'
             }
         }
         stage('DEPLOY-MERGE_INTO_MASTER') {
+            when {
+                branch 'master'
+            }
             steps {
                 sh 'echo ========================='
                 sh 'echo running only when merge into master sent'
