@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        label "agent"
+    }
     environment {
         TEST_VAR1 = 'false'
         TEST_VAR2 = 'sqlite'
