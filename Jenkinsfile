@@ -1,6 +1,6 @@
 pipeline {
     agent {
-        label "agent"
+        label "slave"
     }
     environment {
         TEST_VAR1 = 'false'
